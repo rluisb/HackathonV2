@@ -8,9 +8,10 @@
 	
 	<ui:composition template="/WEB-INF/modelos/padrao.xhtml">
 		<ui:define name="conteudo">
+			
 			<p:layout>
 				<p:layoutUnit position="north" style="text-align: center;">
-					<p:outputLabel style="font-size: 30px;" value="Manutenção de Pessoas"/>
+					<p:outputLabel style="font-size: 30px;" value="Manutenção de pessoas"/>
 				</p:layoutUnit>
 
 				<p:layoutUnit position="center">
@@ -36,8 +37,8 @@
 						<p:commandButton value="Limpar" process="@this" update="@form" action="#{pessoaManagedBean.limpar()}" icon="fa fa-fw fa-eraser" />
 					</h:form>
 					
-					<p:dataTable id="tabelaDePessoas" var="pessoa" value="#{pessoaManagedBean.listaDePessoasCadastrados}"
-						emptyMessage="Não existem pessoas cadastradas" style="padding-top:20px;">
+					<p:dataTable id="tabelaDePessoas" var="pessoa" value="#{pessoaManagedBean.listaDePessoasCadastradas}"
+						emptyMessage="Não existem pessoas cadastrados" style="padding-top:20px;">
 						<p:column headerText="Id">
 				    	    <h:outputText value="#{pessoa.id}" />
 					    </p:column>
@@ -48,9 +49,9 @@
 				    	    <h:outputText value="#{pessoa.cpf}" />
 					    </p:column>
 					    <p:column headerText="Ações" style="text-align: center">
-					    	<p:commandButton icon="fa fa-fw fa-edit" title="Editar pessoa" update="pessoaForm" action="#{pessoaManagedBean.setPessoa(pessoa)}" />
-					    	<p:commandButton icon="fa fa-fw fa-trash" title="Deletar pessoa" update="tabelaDePessoas pessoaForm" action="#{pessoaManagedBean.deletar(pessoa)}">
-					    		<p:confirm header="Confirmação" message="Deseja deletar a pessoa?" icon="ui-icon-alert" />
+					    	<p:commandButton icon="fa fa-fw fa-edit" title="Editar Pessoa" update="pessoaForm" action="#{pessoaManagedBean.setPessoa(pessoa)}" />
+					    	<p:commandButton icon="fa fa-fw fa-trash" title="Deletar Pessoa" update="tabelaDePessoas pessoaForm" action="#{pessoaManagedBean.deletar(pessoa)}">
+					    		<p:confirm header="Confirmação" message="Deseja deletar o Pessoa?" icon="ui-icon-alert" />
 					    	</p:commandButton>
 					    	
 					    	<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
@@ -63,7 +64,7 @@
 				</p:layoutUnit>
 			
 			</p:layout>
-		
+
 		</ui:define>
 	</ui:composition>
 	

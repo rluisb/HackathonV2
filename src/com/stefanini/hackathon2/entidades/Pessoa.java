@@ -11,41 +11,41 @@ public class Pessoa {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+	private Integer id_pessoa;
 	@Column(nullable=false)
-	private String nome;
+	private String nome_pessoa;
 	@Column(nullable=false)
-	private String cpf;
+	private String cpf_pessoa;
 
 	public Pessoa() {
 	}
 	public Integer getId() {
-		return id;
+		return id_pessoa;
 	}
 	public void setId(Integer id) {
-		this.id = id;
+		this.id_pessoa = id;
 	}
 	public String getNome() {
-		return nome;
+		return nome_pessoa;
 	}
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.nome_pessoa = nome;
 	}
 	public String getCpf() {
-		return cpf;
+		return cpf_pessoa;
 	}
 
 	public void setCpf(String cpf) {
-		this.cpf = cpf;
+		this.cpf_pessoa = cpf;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((cpf_pessoa == null) ? 0 : cpf_pessoa.hashCode());
+		result = prime * result + ((id_pessoa == null) ? 0 : id_pessoa.hashCode());
+		result = prime * result + ((nome_pessoa == null) ? 0 : nome_pessoa.hashCode());
 		return result;
 	}
 
@@ -58,20 +58,20 @@ public class Pessoa {
 		if (getClass() != obj.getClass())
 			return false;
 		Pessoa other = (Pessoa) obj;
-		if (cpf == null) {
-			if (other.cpf != null)
+		if (cpf_pessoa == null) {
+			if (other.cpf_pessoa != null)
 				return false;
-		} else if (!cpf.equals(other.cpf))
+		} else if (!cpf_pessoa.equals(other.cpf_pessoa))
 			return false;
-		if (id == null) {
-			if (other.id != null)
+		if (id_pessoa == null) {
+			if (other.id_pessoa != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!id_pessoa.equals(other.id_pessoa))
 			return false;
-		if (nome == null) {
-			if (other.nome != null)
+		if (nome_pessoa == null) {
+			if (other.nome_pessoa != null)
 				return false;
-		} else if (!nome.equals(other.nome))
+		} else if (!nome_pessoa.equals(other.nome_pessoa))
 			return false;
 		return true;
 	}

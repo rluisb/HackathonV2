@@ -11,57 +11,57 @@ public class Livro {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+	private Integer id_livro;
 	@Column(nullable=false)
-	private String nome;
+	private String nome_livro;
 	@Column(nullable=false)
-	private String autor;
+	private String autor_livro;
 	@Column(nullable=false)
-	private Integer paginas;
+	private Integer paginas_livro;
 	
 	public Livro() {
 	}
 
 	public Integer getId() {
-		return id;
+		return id_livro;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.id_livro = id;
 	}
 
 	public String getNome() {
-		return nome;
+		return nome_livro;
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.nome_livro = nome;
 	}
 
 	public String getAutor() {
-		return autor;
+		return autor_livro;
 	}
 
 	public void setAutor(String autor) {
-		this.autor = autor;
+		this.autor_livro = autor;
 	}
 
 	public Integer getPaginas() {
-		return paginas;
+		return paginas_livro;
 	}
 
 	public void setPaginas(Integer paginas) {
-		this.paginas = paginas;
+		this.paginas_livro = paginas;
 	}
 
 	@Override
 	public final int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((autor == null) ? 0 : autor.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((paginas == null) ? 0 : paginas.hashCode());
+		result = prime * result + ((autor_livro == null) ? 0 : autor_livro.hashCode());
+		result = prime * result + ((id_livro == null) ? 0 : id_livro.hashCode());
+		result = prime * result + ((nome_livro == null) ? 0 : nome_livro.hashCode());
+		result = prime * result + ((paginas_livro == null) ? 0 : paginas_livro.hashCode());
 		return result;
 	}
 
@@ -74,25 +74,25 @@ public class Livro {
 		if (getClass() != obj.getClass())
 			return false;
 		Livro other = (Livro) obj;
-		if (autor == null) {
-			if (other.autor != null)
+		if (autor_livro == null) {
+			if (other.autor_livro != null)
 				return false;
-		} else if (!autor.equals(other.autor))
+		} else if (!autor_livro.equals(other.autor_livro))
 			return false;
-		if (id == null) {
-			if (other.id != null)
+		if (id_livro == null) {
+			if (other.id_livro != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!id_livro.equals(other.id_livro))
 			return false;
-		if (nome == null) {
-			if (other.nome != null)
+		if (nome_livro == null) {
+			if (other.nome_livro != null)
 				return false;
-		} else if (!nome.equals(other.nome))
+		} else if (!nome_livro.equals(other.nome_livro))
 			return false;
-		if (paginas == null) {
-			if (other.paginas != null)
+		if (paginas_livro == null) {
+			if (other.paginas_livro != null)
 				return false;
-		} else if (!paginas.equals(other.paginas))
+		} else if (!paginas_livro.equals(other.paginas_livro))
 			return false;
 		return true;
 	}

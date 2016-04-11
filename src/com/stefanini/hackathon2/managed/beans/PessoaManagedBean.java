@@ -15,7 +15,7 @@ import com.stefanini.hackathon2.util.Mensageiro;
 public class PessoaManagedBean {
 
 	private Pessoa Pessoa;
-	private List<Pessoa> listaDePessoasCadastrados;
+	private List<Pessoa> listaDePessoasCadastradas;
 	
 	@Inject
 	private PessoaServico servico;
@@ -42,18 +42,18 @@ public class PessoaManagedBean {
 	}
 	
 	private void carregaListaDePessoas() {
-		setListaDePessoasCadastrados(servico.carregaTodasPessoasDoBanco());
+		setListaDePessoasCadastradas(servico.carregaTodasPessoasDoBanco());
 	}
 	
-	public List<Pessoa> getListaDePessoasCadastrados() {
-		if (listaDePessoasCadastrados == null) {
+	public List<Pessoa> getListaDePessoasCadastradas() {
+		if (listaDePessoasCadastradas == null) {
 			carregaListaDePessoas();
 		}
-		return listaDePessoasCadastrados;
+		return listaDePessoasCadastradas;
 	}
 	
-	public void setListaDePessoasCadastrados(List<Pessoa> listaDePessoasCadastrados) {
-		this.listaDePessoasCadastrados = listaDePessoasCadastrados;
+	public void setListaDePessoasCadastradas(List<Pessoa> listaDePessoasCadastradas) {
+		this.listaDePessoasCadastradas = listaDePessoasCadastradas;
 	}
 	
 	public Pessoa getPessoa() {

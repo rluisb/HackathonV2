@@ -8,7 +8,9 @@
 
 		<jta-data-source>java:/jdbc/HackathonDS</jta-data-source>
 		
+		<class>com.stefanini.hackathon2.entidades.Pessoa</class>
 		<class>com.stefanini.hackathon2.entidades.Livro</class>
+		<class>com.stefanini.hackathon2.entidades.Emprestimo</class>
 
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
