@@ -21,15 +21,13 @@
 						
 							<div style="width: 500px; height: 300px; position: relative; left: 50%; margin-left: -250px;" >
 								<div style="position: relative; left: 28%; margin-top: 20%;">
-									<p:inputText id="usuario" requiredMessage="Campo obrigatório" required="true" 
-										value="#{usuarioManagedBean.usuario.userName}" placeholder="Usuario"/>
+									<p:inputText id="usuario" value="#{usuarioManagedBean.usuario.userName}" placeholder="Usuario"/>
 									<p:message for="usuario" />
 									<br />
-									<p:inputText id="senha" requiredMessage="Campo obrigatório" required="true" 
-										value="#{usuarioManagedBean.usuario.userName}" placeholder="Senha" />
+									<p:inputText id="senha" value="#{usuarioManagedBean.usuario.passwd}" placeholder="Senha" />
 									<p:message for="senha" />
 									<div style="position: relative; left: 15%; margin-top: 2%;">
-										<p:commandButton title="Login" value="Login" update="usuarioForm" />
+										<p:commandButton title="Login" value="Login" />
 									</div>
 								</div>
 							</div>

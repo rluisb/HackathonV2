@@ -18,6 +18,8 @@ public class Livro {
 	private String autor_livro;
 	@Column(nullable=false)
 	private Integer paginas_livro;
+	@Column(nullable=true)
+	private String status;
 	
 	public Livro() {
 	}
@@ -54,19 +56,28 @@ public class Livro {
 		this.paginas_livro = paginas;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	@Override
-	public final int hashCode() {
+	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((autor_livro == null) ? 0 : autor_livro.hashCode());
 		result = prime * result + ((id_livro == null) ? 0 : id_livro.hashCode());
 		result = prime * result + ((nome_livro == null) ? 0 : nome_livro.hashCode());
 		result = prime * result + ((paginas_livro == null) ? 0 : paginas_livro.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
 
 	@Override
-	public final boolean equals(Object obj) {
+	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -94,7 +105,14 @@ public class Livro {
 				return false;
 		} else if (!paginas_livro.equals(other.paginas_livro))
 			return false;
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
+			return false;
 		return true;
 	}
+
+	
 
 }

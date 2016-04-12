@@ -21,22 +21,21 @@ public class Emprestimo {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_pessoa", nullable=true)
 	private Pessoa pessoa;
-	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="id_livro", nullable=true)
 	private Livro livro;
-	
 	@Column(nullable=true)
 	@Convert(converter = LocalDatePersistenceConverter.class)
 	private LocalDate retirada;
-	
 	@Convert(converter = LocalDatePersistenceConverter.class)
 	@Column(nullable=true)
 	private LocalDate devolucao;
+	@Column(nullable=true)
+	private String status;
+	
 	
 	public Emprestimo() {
 		this.pessoa = new Pessoa();
@@ -84,6 +83,14 @@ public class Emprestimo {
 		this.devolucao = devolucao;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -93,6 +100,7 @@ public class Emprestimo {
 		result = prime * result + ((livro == null) ? 0 : livro.hashCode());
 		result = prime * result + ((pessoa == null) ? 0 : pessoa.hashCode());
 		result = prime * result + ((retirada == null) ? 0 : retirada.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
 
@@ -130,12 +138,13 @@ public class Emprestimo {
 				return false;
 		} else if (!retirada.equals(other.retirada))
 			return false;
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
+			return false;
 		return true;
 	}
-	
-	
-	
-	
 	
 	
 }
