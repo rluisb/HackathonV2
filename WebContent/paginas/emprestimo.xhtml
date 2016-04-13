@@ -17,22 +17,20 @@
 				<p:layoutUnit position="center">
 					<h:form id="emprestimoForm">
 						<p:growl id="growl" showDetail="true" sticky="false" life="4000" />
-						<p:panelGrid columns="5">
+						<p:panelGrid columns="4">
 						
 							<p:outputLabel for="btnModalPessoa" value="Locador:"/>
-							<p:inputText type="hidden" id="cpf" requiredMessage="Campo obrigatório" required="true" value="#{emprestimoManagedBean.emprestimo.pessoa.cpf}" />
+							<p:inputText type="text" id="cpf" requiredMessage="Campo obrigatório" required="true" value="#{emprestimoManagedBean.emprestimo.pessoa.nome}" disabled="true" />
 							<p:commandButton value="Buscar" id="btnModalPessoa" oncomplete="PF('dialogPessoa').show();" />
-							<p:outputLabel id="lblNomePessoa" value="#{emprestimoManagedBean.emprestimo.pessoa.nome}" />
 							<ui:include src="popups/popup-selecionar-pessoa.xhtml" />
 							
 							<p:outputLabel for="btnModalLivro" value="Livro:"/>
-							<p:inputText type="hidden" id="idLivro" requiredMessage="Campo obrigatório" required="true" value="#{emprestimoManagedBean.emprestimo.livro.id}" />
+							<p:inputText type="text" id="idLivro" requiredMessage="Campo obrigatório" required="true" value="#{emprestimoManagedBean.emprestimo.livro.nome}" disabled="true"/>
 							<p:commandButton for="idLivro" value="Buscar" id="btnModalLivro" oncomplete="PF('dialogLivro').show();" />
-							<p:outputLabel id="lblNomeLivro" value="#{emprestimoManagedBean.emprestimo.livro.nome}" />
 							<ui:include src="popups/popup-selecionar-livro.xhtml" />
 							
 						</p:panelGrid>
-						
+						<br/>
 						<p:commandButton value="Salvar" process="@form" update="@form tabelaDeEmprestimos" action="#{emprestimoManagedBean.salvar()}" icon="fa fa-fw fa-save" />
 						<p:commandButton value="Limpar" process="@this" update="@form" action="#{emprestimoManagedBean.limpar()}" icon="fa fa-fw fa-eraser" />
 					</h:form>
@@ -55,14 +53,14 @@
 						    </p:column>
 						    
 						    <p:column headerText="Dias em Atraso">
-					    	    <h:outputText value="#{emprestimoManagedBean.getDiasEmAtraso(emprestimo.retirada, emprestimo.devolucao)}" />
+					    	    <h:outputText value="#{emprestimoManagedBean.getDiasEmAtraso(emprestimo.retirada, emprestimo.devolucao)}" disabled="true"/>
 						    </p:column>
 						    
 						    <p:column headerText="Ação" style="text-align: center">
-						    	<p:commandButton icon="fa fa-fw fa-check" title="Efetuar Entrega" update="tabelaDeEmprestimos emprestimoForm" action="#{emprestimoManagedBean.finalizarEmprestimo(emprestimo)}">
+						    	<p:commandButton icon="fa fa-fw fa-check" title="Efetuar Entrega" update="tabelaDeEmprestimos emprestimoForm" action="#{emprestimoManagedBean.finalizarEmprestimo(emprestimo)}" >
 						    		<p:confirm header="Confirmação" message="Finalizar empréstimo?" icon="ui-icon-alert" />
 						    	</p:commandButton>
-						    	<p:commandButton disabled="true" icon="fa fa-fw fa-trash" title="Deletar Emprestimo" update="tabelaDeEmprestimos emprestimoForm" action="#{emprestimoManagedBean.deletar(emprestimo)}">
+						    	<p:commandButton  icon="fa fa-fw fa-trash" title="Deletar Emprestimo" update="tabelaDeEmprestimos emprestimoForm" action="#{emprestimoManagedBean.deletar(emprestimo)}">
 						    		<p:confirm header="Confirmação" message="Deseja deletar o empréstimo?" icon="ui-icon-alert" />
 						    	</p:commandButton>
 						    	
