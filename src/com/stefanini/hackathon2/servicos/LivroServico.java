@@ -31,5 +31,4 @@ public class LivroServico {
 	public void deletar(Livro livro) {
 		repositorio.remover(livro);
 	}
-	
 }

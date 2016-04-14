@@ -52,6 +52,6 @@ public class EmprestimoServico {
 			}
 			qtdDias++;
 		}
-		return qtdDias <= 4 ? 0 : qtdDias - 4;
+		return qtdDias <= 7 ? 0 : qtdDias - 7;
 	}
 }

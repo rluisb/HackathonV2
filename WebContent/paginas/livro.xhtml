@@ -32,9 +32,14 @@
 							<p:message for="autor" />
 						
 							<p:outputLabel for="paginas" value="Páginas:"/>
-							<p:inputMask maxlength="4" id="paginas" requiredMessage="Campo obrigatório" mask="9?999" required="true" 
+							<p:inputMask maxlength="4" id="paginas" requiredMessage="Campo obrigatório" mask="999" required="true" 
 								value="#{livroManagedBean.livro.paginas}" />
 							<p:message for="paginas" />
+							
+							<p:outputLabel for="qtde_estoque" value="Estoque:"/>
+							<p:inputMask maxlength="4" id="qtde_estoque" requiredMessage="Campo obrigatório" required="true" 
+								value="#{livroManagedBean.livro.qtde_estoque}" />
+							<p:message for="qtde_estoque" />
 						
 						</p:panelGrid>
 					
@@ -55,6 +60,15 @@
 					    </p:column>
 					    <p:column headerText="Páginas">
 				    	    <h:outputText value="#{livro.paginas}" />
+					    </p:column>
+					    <p:column headerText="Estoque">
+				    	    <h:outputText value="#{livro.qtde_estoque}" />
+					    </p:column>
+					    <p:column headerText="Emprestado">
+				    	    <h:outputText value="#{livro.qtde_emprestado}" />
+					    </p:column>
+					    <p:column headerText="Status">
+				    	    <h:outputText value="#{livro.status}" />
 					    </p:column>
 					    <p:column headerText="Ações" style="text-align: center">
 					    	<p:commandButton icon="fa fa-fw fa-edit" title="Editar Livro" update="livroForm" action="#{livroManagedBean.setLivro(livro)}" />

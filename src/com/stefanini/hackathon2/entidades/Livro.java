@@ -13,68 +13,107 @@ public class Livro {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id_livro;
 	@Column(nullable=false)
-	private String nome_livro;
+	private String nome;
 	@Column(nullable=false)
-	private String autor_livro;
+	private String autor;
 	@Column(nullable=false)
-	private Integer paginas_livro;
+	private Integer paginas;
+	@Column(nullable=false)
+	private Integer qtde_estoque;
+	@Column(nullable=true)
+	private Integer qtde_emprestado;
 	@Column(nullable=true)
 	private String status;
 	
+	
 	public Livro() {
 	}
+
 
 	public Integer getId() {
 		return id_livro;
 	}
 
-	public void setId(Integer id) {
-		this.id_livro = id;
+
+	public void setId(Integer id_livro) {
+		this.id_livro = id_livro;
 	}
+
 
 	public String getNome() {
-		return nome_livro;
+		return nome;
 	}
+
 
 	public void setNome(String nome) {
-		this.nome_livro = nome;
+		this.nome = nome;
 	}
+
 
 	public String getAutor() {
-		return autor_livro;
+		return autor;
 	}
+
 
 	public void setAutor(String autor) {
-		this.autor_livro = autor;
+		this.autor = autor;
 	}
+
 
 	public Integer getPaginas() {
-		return paginas_livro;
+		return paginas;
 	}
 
+
 	public void setPaginas(Integer paginas) {
-		this.paginas_livro = paginas;
+		this.paginas = paginas;
 	}
+
+
+	public Integer getQtde_estoque() {
+		return qtde_estoque;
+	}
+
+
+	public void setQtde_estoque(Integer qtde_estoque) {
+		this.qtde_estoque = qtde_estoque;
+	}
+
+
+	public Integer getQtde_emprestado() {
+		return qtde_emprestado;
+	}
+
+
+	public void setQtde_emprestado(Integer qtde_emprestado) {
+		this.qtde_emprestado = qtde_emprestado;
+	}
+
 
 	public String getStatus() {
 		return status;
 	}
 
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((autor_livro == null) ? 0 : autor_livro.hashCode());
+		result = prime * result + ((autor == null) ? 0 : autor.hashCode());
 		result = prime * result + ((id_livro == null) ? 0 : id_livro.hashCode());
-		result = prime * result + ((nome_livro == null) ? 0 : nome_livro.hashCode());
-		result = prime * result + ((paginas_livro == null) ? 0 : paginas_livro.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((paginas == null) ? 0 : paginas.hashCode());
+		result = prime * result + ((qtde_emprestado == null) ? 0 : qtde_emprestado.hashCode());
+		result = prime * result + ((qtde_estoque == null) ? 0 : qtde_estoque.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -85,25 +124,35 @@ public class Livro {
 		if (getClass() != obj.getClass())
 			return false;
 		Livro other = (Livro) obj;
-		if (autor_livro == null) {
-			if (other.autor_livro != null)
+		if (autor == null) {
+			if (other.autor != null)
 				return false;
-		} else if (!autor_livro.equals(other.autor_livro))
+		} else if (!autor.equals(other.autor))
 			return false;
 		if (id_livro == null) {
 			if (other.id_livro != null)
 				return false;
 		} else if (!id_livro.equals(other.id_livro))
 			return false;
-		if (nome_livro == null) {
-			if (other.nome_livro != null)
+		if (nome == null) {
+			if (other.nome != null)
 				return false;
-		} else if (!nome_livro.equals(other.nome_livro))
+		} else if (!nome.equals(other.nome))
 			return false;
-		if (paginas_livro == null) {
-			if (other.paginas_livro != null)
+		if (paginas == null) {
+			if (other.paginas != null)
 				return false;
-		} else if (!paginas_livro.equals(other.paginas_livro))
+		} else if (!paginas.equals(other.paginas))
+			return false;
+		if (qtde_emprestado == null) {
+			if (other.qtde_emprestado != null)
+				return false;
+		} else if (!qtde_emprestado.equals(other.qtde_emprestado))
+			return false;
+		if (qtde_estoque == null) {
+			if (other.qtde_estoque != null)
+				return false;
+		} else if (!qtde_estoque.equals(other.qtde_estoque))
 			return false;
 		if (status == null) {
 			if (other.status != null)
@@ -112,7 +161,4 @@ public class Livro {
 			return false;
 		return true;
 	}
-
-	
-
 }
