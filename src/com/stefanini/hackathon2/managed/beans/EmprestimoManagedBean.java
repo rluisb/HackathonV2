@@ -25,7 +25,7 @@ public class EmprestimoManagedBean {
 	}
 	
 	public void salvar() {
-		servico.salvar(getEmprestimo());
+		servico.emprestaLivro(getEmprestimo());
 		Mensageiro.notificaInformacao("Parabéns!", "Emprestimo salvo com sucesso!");
 		carregaListaDeEmprestimos();
 		limpar();
@@ -70,7 +70,7 @@ public class EmprestimoManagedBean {
 	
 	public void finalizarEmprestimo(Emprestimo emprestimo) {
 		emprestimo.setDevolucao(LocalDate.now());
-		servico.salvar(emprestimo);
+		servico.devolveLivro(emprestimo);
 	}
 	
 	public String getDiasEmAtraso(String dataRetiradaString, String dataEntregaString) {

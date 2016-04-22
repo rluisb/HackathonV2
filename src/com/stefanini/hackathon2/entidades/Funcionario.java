@@ -7,48 +7,55 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Pessoa {
+public class Funcionario {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer idPessoa;
+	private Integer idFuncionario;
 	@Column(nullable=false)
 	private String nome;
 	@Column(nullable=false)
-	private String cpf;
+	private String cargo;
+	
+	
+	
+	public Funcionario() {
 
-	public Pessoa() {
 	}
+
 	public Integer getId() {
-		return idPessoa;
+		return idFuncionario;
 	}
-	public void setId(Integer id) {
-		this.idPessoa = id;
+	
+	public void setId(Integer idFuncionario) {
+		this.idFuncionario = idFuncionario;
 	}
+	
 	public String getNome() {
 		return nome;
 	}
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getCpf() {
-		return cpf;
+	
+	public String getCargo() {
+		return cargo;
 	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
-		result = prime * result + ((idPessoa == null) ? 0 : idPessoa.hashCode());
+		result = prime * result + ((cargo == null) ? 0 : cargo.hashCode());
+		result = prime * result + ((idFuncionario == null) ? 0 : idFuncionario.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -57,16 +64,16 @@ public class Pessoa {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Pessoa other = (Pessoa) obj;
-		if (cpf == null) {
-			if (other.cpf != null)
+		Funcionario other = (Funcionario) obj;
+		if (cargo == null) {
+			if (other.cargo != null)
 				return false;
-		} else if (!cpf.equals(other.cpf))
+		} else if (!cargo.equals(other.cargo))
 			return false;
-		if (idPessoa == null) {
-			if (other.idPessoa != null)
+		if (idFuncionario == null) {
+			if (other.idFuncionario != null)
 				return false;
-		} else if (!idPessoa.equals(other.idPessoa))
+		} else if (!idFuncionario.equals(other.idFuncionario))
 			return false;
 		if (nome == null) {
 			if (other.nome != null)
@@ -75,4 +82,11 @@ public class Pessoa {
 			return false;
 		return true;
 	}
+	@Override
+	public String toString() {
+		return "Funcionario [idFuncionario=" + idFuncionario + ", nome=" + nome + ", cargo=" + cargo + "]";
+	}
+	
+	
+	
 }

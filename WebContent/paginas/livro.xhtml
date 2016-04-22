@@ -36,11 +36,11 @@
 								value="#{livroManagedBean.livro.paginas}" />
 							<p:message for="paginas" />
 							
-							<p:outputLabel for="qtde_estoque" value="Estoque:"/>
-							<p:inputMask maxlength="4" id="qtde_estoque" requiredMessage="Campo obrigatório" required="true" 
-								value="#{livroManagedBean.livro.qtde_estoque}" />
-							<p:message for="qtde_estoque" />
-						
+							<p:outputLabel for="qtdeEstoque" value="Estoque:"/>
+							<p:inputMask maxlength="4" id="qtdeEstoque" requiredMessage="Campo obrigatório" required="true" 
+								value="#{livroManagedBean.livro.qtdeEstoque}" />
+							<p:message for="qtdeEstoque" />
+							
 						</p:panelGrid>
 					
 						<p:commandButton value="Salvar" process="@form" update="@form tabelaDeLivros" action="#{livroManagedBean.salvar()}" icon="fa fa-fw fa-save" />
@@ -62,10 +62,10 @@
 				    	    <h:outputText value="#{livro.paginas}" />
 					    </p:column>
 					    <p:column headerText="Estoque">
-				    	    <h:outputText value="#{livro.qtde_estoque}" />
+				    	    <h:outputText value="#{livro.qtdeEstoque}" />
 					    </p:column>
 					    <p:column headerText="Emprestado">
-				    	    <h:outputText value="#{livro.qtde_emprestado}" />
+				    	    <h:outputText value="#{livro.qtdeEmprestado}" />
 					    </p:column>
 					    <p:column headerText="Status">
 				    	    <h:outputText value="#{livro.status}" />

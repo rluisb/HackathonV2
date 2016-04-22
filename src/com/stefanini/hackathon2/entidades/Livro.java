@@ -11,7 +11,7 @@ public class Livro {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id_livro;
+	private Integer idLivro;
 	@Column(nullable=false)
 	private String nome;
 	@Column(nullable=false)
@@ -19,24 +19,25 @@ public class Livro {
 	@Column(nullable=false)
 	private Integer paginas;
 	@Column(nullable=false)
-	private Integer qtde_estoque;
+	private Integer qtdeEstoque;
 	@Column(nullable=true)
-	private Integer qtde_emprestado;
+	private Integer qtdeEmprestado;
 	@Column(nullable=true)
 	private String status;
 	
 	
 	public Livro() {
+		this.status = "Disponivel";
 	}
 
 
 	public Integer getId() {
-		return id_livro;
+		return idLivro;
 	}
 
 
 	public void setId(Integer id_livro) {
-		this.id_livro = id_livro;
+		this.idLivro = id_livro;
 	}
 
 
@@ -70,23 +71,23 @@ public class Livro {
 	}
 
 
-	public Integer getQtde_estoque() {
-		return qtde_estoque;
+	public Integer getQtdeEstoque() {
+		return qtdeEstoque;
 	}
 
 
-	public void setQtde_estoque(Integer qtde_estoque) {
-		this.qtde_estoque = qtde_estoque;
+	public void setQtdeEstoque(Integer qtde_estoque) {
+		this.qtdeEstoque = qtde_estoque;
 	}
 
 
-	public Integer getQtde_emprestado() {
-		return qtde_emprestado;
+	public Integer getQtdeEmprestado() {
+		return qtdeEmprestado;
 	}
 
 
-	public void setQtde_emprestado(Integer qtde_emprestado) {
-		this.qtde_emprestado = qtde_emprestado;
+	public void setQtdeEmprestado(Integer qtde_emprestado) {
+		this.qtdeEmprestado = qtde_emprestado;
 	}
 
 
@@ -105,11 +106,11 @@ public class Livro {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((autor == null) ? 0 : autor.hashCode());
-		result = prime * result + ((id_livro == null) ? 0 : id_livro.hashCode());
+		result = prime * result + ((idLivro == null) ? 0 : idLivro.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((paginas == null) ? 0 : paginas.hashCode());
-		result = prime * result + ((qtde_emprestado == null) ? 0 : qtde_emprestado.hashCode());
-		result = prime * result + ((qtde_estoque == null) ? 0 : qtde_estoque.hashCode());
+		result = prime * result + ((qtdeEmprestado == null) ? 0 : qtdeEmprestado.hashCode());
+		result = prime * result + ((qtdeEstoque == null) ? 0 : qtdeEstoque.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
@@ -129,10 +130,10 @@ public class Livro {
 				return false;
 		} else if (!autor.equals(other.autor))
 			return false;
-		if (id_livro == null) {
-			if (other.id_livro != null)
+		if (idLivro == null) {
+			if (other.idLivro != null)
 				return false;
-		} else if (!id_livro.equals(other.id_livro))
+		} else if (!idLivro.equals(other.idLivro))
 			return false;
 		if (nome == null) {
 			if (other.nome != null)
@@ -144,15 +145,15 @@ public class Livro {
 				return false;
 		} else if (!paginas.equals(other.paginas))
 			return false;
-		if (qtde_emprestado == null) {
-			if (other.qtde_emprestado != null)
+		if (qtdeEmprestado == null) {
+			if (other.qtdeEmprestado != null)
 				return false;
-		} else if (!qtde_emprestado.equals(other.qtde_emprestado))
+		} else if (!qtdeEmprestado.equals(other.qtdeEmprestado))
 			return false;
-		if (qtde_estoque == null) {
-			if (other.qtde_estoque != null)
+		if (qtdeEstoque == null) {
+			if (other.qtdeEstoque != null)
 				return false;
-		} else if (!qtde_estoque.equals(other.qtde_estoque))
+		} else if (!qtdeEstoque.equals(other.qtdeEstoque))
 			return false;
 		if (status == null) {
 			if (other.status != null)
@@ -161,4 +162,11 @@ public class Livro {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Livro [idLivro=" + idLivro + ", nome=" + nome + ", autor=" + autor + ", paginas=" + paginas
+				+ ", qtdeEstoque=" + qtdeEstoque + ", qtdeEmprestado=" + qtdeEmprestado + ", status=" + status + "]";
+	}
+	
 }

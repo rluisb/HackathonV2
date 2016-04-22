@@ -1,7 +1,9 @@
 package com.stefanini.hackathon2.entidades;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
@@ -10,8 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import com.stefanini.hackathon2.util.LocalDatePersistenceConverter;
 
@@ -22,11 +24,14 @@ public class Emprestimo {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id_pessoa", nullable=true)
+    @JoinColumn(name="idPessoa", nullable=true)
 	private Pessoa pessoa;
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="id_livro", nullable=true)
-	private Livro livro;
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="idFuncionario", nullable=true)
+	private Funcionario funcionario;
+	@ManyToMany(cascade = CascadeType.REFRESH)
+	@JoinColumn(name = "idLivro", nullable = false)
+	private List<Livro> livros;
 	@Column(nullable=true)
 	@Convert(converter = LocalDatePersistenceConverter.class)
 	private LocalDate retirada;
@@ -38,9 +43,8 @@ public class Emprestimo {
 	
 	
 	public Emprestimo() {
-		this.pessoa = new Pessoa();
-		this.livro = new Livro();
 		this.retirada = LocalDate.now();
+		this.status = "Sem Status";
 	}
 
 	public Integer getId() {
@@ -58,13 +62,21 @@ public class Emprestimo {
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
-
-	public Livro getLivro() {
-		return livro;
+	
+	public Funcionario getFuncionario() {
+		return funcionario;
 	}
 
-	public void setLivro(Livro livro) {
-		this.livro = livro;
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
+	}
+	
+	public List<Livro> getLivros() {
+		return livros;
+	}
+
+	public void setLivros(List<Livro> livros) {
+		this.livros = livros;
 	}
 
 	public LocalDate getRetirada() {
@@ -96,8 +108,9 @@ public class Emprestimo {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((devolucao == null) ? 0 : devolucao.hashCode());
+		result = prime * result + ((funcionario == null) ? 0 : funcionario.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((livro == null) ? 0 : livro.hashCode());
+		result = prime * result + ((livros == null) ? 0 : livros.hashCode());
 		result = prime * result + ((pessoa == null) ? 0 : pessoa.hashCode());
 		result = prime * result + ((retirada == null) ? 0 : retirada.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
@@ -118,15 +131,20 @@ public class Emprestimo {
 				return false;
 		} else if (!devolucao.equals(other.devolucao))
 			return false;
+		if (funcionario == null) {
+			if (other.funcionario != null)
+				return false;
+		} else if (!funcionario.equals(other.funcionario))
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (livro == null) {
-			if (other.livro != null)
+		if (livros == null) {
+			if (other.livros != null)
 				return false;
-		} else if (!livro.equals(other.livro))
+		} else if (!livros.equals(other.livros))
 			return false;
 		if (pessoa == null) {
 			if (other.pessoa != null)
@@ -145,6 +163,13 @@ public class Emprestimo {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Emprestimo [id=" + id + ", pessoa=" + pessoa + ", funcionario=" + funcionario + ", livro=" + livros
+				+ ", retirada=" + retirada + ", devolucao=" + devolucao + ", status=" + status + "]";
+	}
+	
 	
 	
 }
