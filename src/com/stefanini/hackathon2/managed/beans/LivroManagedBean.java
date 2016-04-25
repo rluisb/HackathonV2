@@ -4,24 +4,26 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.inject.Inject;
 
 import com.stefanini.hackathon2.entidades.Livro;
-import com.stefanini.hackathon2.servicos.LivroServico;
+import com.stefanini.hackathon2.servicos.ServicoAbstrato;
 import com.stefanini.hackathon2.util.Mensageiro;
 
 @ManagedBean
 @ViewScoped
-public class LivroManagedBean {
+public class LivroManagedBean extends ManagedBeanAbstrato<Livro>{
+	
+	
+	public LivroManagedBean() {
+
+	}
+
+	public LivroManagedBean(ServicoAbstrato<Livro> servico) {
+		super(servico);
+	}
 
 	private Livro livro;
 	private List<Livro> listaDeLivrosCadastrados;
-	
-	@Inject
-	private LivroServico servico;
-	
-	public LivroManagedBean() {
-	}
 	
 	public void salvar() {
 		servico.salvar(getLivro());
@@ -42,7 +44,7 @@ public class LivroManagedBean {
 	}
 	
 	private void carregaListaDeLivros() {
-		setListaDeLivrosCadastrados(servico.carregaTodosLivrosDoBanco());
+		setListaDeLivrosCadastrados(servico.carregaTodosRegistrosDoBanco());
 	}
 	
 	public List<Livro> getListaDeLivrosCadastrados() {

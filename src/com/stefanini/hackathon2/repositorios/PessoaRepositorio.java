@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import com.stefanini.hackathon2.entidades.Pessoa;
 
 @SuppressWarnings("all")
-public class PessoaRepositorio {
+public class PessoaRepositorio extends RepositorioAbstrato<Pessoa> {
 	
 	@Inject
 	private EntityManager entityManager;

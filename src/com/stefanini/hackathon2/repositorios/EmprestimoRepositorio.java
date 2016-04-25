@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import com.stefanini.hackathon2.entidades.Emprestimo;
 
 @SuppressWarnings("all")
-public class EmprestimoRepositorio {
+public class EmprestimoRepositorio extends RepositorioAbstrato<Emprestimo> {
 	
 	@Inject
 	private EntityManager entityManager;

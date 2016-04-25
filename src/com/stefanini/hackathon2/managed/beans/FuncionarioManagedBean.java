@@ -4,24 +4,24 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.inject.Inject;
 
 import com.stefanini.hackathon2.entidades.Funcionario;
-import com.stefanini.hackathon2.servicos.FuncionarioServico;
+import com.stefanini.hackathon2.servicos.ServicoAbstrato;
 import com.stefanini.hackathon2.util.Mensageiro;
 
 @ManagedBean
 @ViewScoped
-public class FuncionarioManagedBean {
-	
-	private Funcionario Funcionario;
-	private List<Funcionario> listaDeFuncionariosCadastradas;
-	
-	@Inject
-	private FuncionarioServico servico;
+public class FuncionarioManagedBean extends ManagedBeanAbstrato<Funcionario>{
 	
 	public FuncionarioManagedBean() {
 	}
+
+	public FuncionarioManagedBean(ServicoAbstrato<com.stefanini.hackathon2.entidades.Funcionario> servico) {
+		super(servico);
+	}
+	
+	private Funcionario Funcionario;
+	private List<Funcionario> listaDeFuncionariosCadastradas;
 	
 	public void salvar() {
 		servico.salvar(getFuncionario());
@@ -42,7 +42,7 @@ public class FuncionarioManagedBean {
 	}
 	
 	private void carregaListaDeFuncionarios() {
-		setListaDeFuncionariosCadastradas(servico.carregaTodasFuncionariosDoBanco());
+		setListaDeFuncionariosCadastradas(servico.carregaTodosRegistrosDoBanco());
 	}
 	
 	public List<Funcionario> getListaDeFuncionariosCadastradas() {

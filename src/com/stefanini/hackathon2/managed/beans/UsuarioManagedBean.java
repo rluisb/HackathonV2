@@ -4,24 +4,26 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.inject.Inject;
 
 import com.stefanini.hackathon2.entidades.Usuario;
-import com.stefanini.hackathon2.servicos.UsuarioServico;
+import com.stefanini.hackathon2.servicos.ServicoAbstrato;
 import com.stefanini.hackathon2.util.Mensageiro;
 
 @ManagedBean
 @ViewScoped
-public class UsuarioManagedBean {
+public class UsuarioManagedBean extends ManagedBeanAbstrato<Usuario>{
+	
+	public UsuarioManagedBean() {
+
+	}
+
+	public UsuarioManagedBean(ServicoAbstrato<com.stefanini.hackathon2.entidades.Usuario> servico) {
+		super(servico);
+	}
 	
 	private Usuario Usuario;
 	private List<Usuario> listaDeUsuariosCadastradas;
 	
-	@Inject
-	private UsuarioServico servico;
-	
-	public UsuarioManagedBean() {
-	}
 	
 	public void salvar() {
 		servico.salvar(getUsuario());
@@ -42,7 +44,7 @@ public class UsuarioManagedBean {
 	}
 	
 	private void carregaListaDeUsuarios() {
-		setListaDeUsuariosCadastradas(servico.carregaTodasUsuariosDoBanco());
+		setListaDeUsuariosCadastradas(servico.carregaTodosRegistrosDoBanco());
 	}
 	
 	public List<Usuario> getListaDeUsuariosCadastradas() {

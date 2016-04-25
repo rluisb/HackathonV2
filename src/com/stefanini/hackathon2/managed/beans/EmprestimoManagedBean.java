@@ -9,23 +9,30 @@ import javax.inject.Inject;
 
 import com.stefanini.hackathon2.entidades.Emprestimo;
 import com.stefanini.hackathon2.servicos.EmprestimoServico;
+import com.stefanini.hackathon2.servicos.ServicoAbstrato;
 import com.stefanini.hackathon2.util.Mensageiro;
+import com.stefanini.hackathon2.managed.beans.ManagedBeanAbstrato;
 
 @ManagedBean
 @ViewScoped
-public class EmprestimoManagedBean {
+public class EmprestimoManagedBean extends ManagedBeanAbstrato<Emprestimo>{
 
+	public EmprestimoManagedBean() {
+		
+	}
+	
+	public EmprestimoManagedBean(ServicoAbstrato<Emprestimo> servico) {
+		super(servico);
+	}
+
+
+
+	@Inject
+	private EmprestimoServico empServico;
 	private Emprestimo emprestimo;
 	private List<Emprestimo> listaDeEmprestimosCadastrados;
 	
-	@Inject
-	private EmprestimoServico servico;
-	
-	public EmprestimoManagedBean() {
-	}
-	
 	public void salvar() {
-		servico.emprestaLivro(getEmprestimo());
 		Mensageiro.notificaInformacao("Parabéns!", "Emprestimo salvo com sucesso!");
 		carregaListaDeEmprestimos();
 		limpar();
@@ -43,7 +50,7 @@ public class EmprestimoManagedBean {
 	}
 	
 	private void carregaListaDeEmprestimos() {
-		setListaDeEmprestimosCadastrados(servico.carregaTodosEmprestimosDoBanco());
+		setListaDeEmprestimosCadastrados(servico.carregaTodosRegistrosDoBanco());
 	}
 	
 	public List<Emprestimo> getListaDeEmprestimosCadastrados() {
@@ -70,7 +77,6 @@ public class EmprestimoManagedBean {
 	
 	public void finalizarEmprestimo(Emprestimo emprestimo) {
 		emprestimo.setDevolucao(LocalDate.now());
-		servico.devolveLivro(emprestimo);
 	}
 	
 	public String getDiasEmAtraso(String dataRetiradaString, String dataEntregaString) {
@@ -81,7 +87,7 @@ public class EmprestimoManagedBean {
 		}		
 		try {
 			localDateRetirada = LocalDate.parse(dataRetiradaString);
-			return String.valueOf(servico.calcIntervaloDias(localDateRetirada, localDateEntrega));
+			return String.valueOf(empServico.calcIntervaloDias(localDateRetirada, localDateEntrega));
 		} catch (Exception e) {
 			return "0";
 		}
